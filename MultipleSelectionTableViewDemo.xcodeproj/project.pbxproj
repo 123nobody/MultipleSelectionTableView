@@ -18,6 +18,17 @@
 		B63671A9167AC5CE00AD3CE9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B63671A8167AC5CE00AD3CE9 /* Default-568h@2x.png */; };
 		B63671AC167AC5CE00AD3CE9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63671AB167AC5CE00AD3CE9 /* ViewController.m */; };
 		B63671AF167AC5CE00AD3CE9 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B63671AD167AC5CE00AD3CE9 /* ViewController.xib */; };
+		B63671BD167AF30F00AD3CE9 /* MSBottomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63671BC167AF30F00AD3CE9 /* MSBottomViewController.m */; };
+		B63671C3167B0C2700AD3CE9 /* MSTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B63671C2167B0C2700AD3CE9 /* MSTableView.m */; };
+		B63671CA167B178400AD3CE9 /* MSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B63671C9167B178400AD3CE9 /* MSTableViewCell.m */; };
+		B63671D8167B29BE00AD3CE9 /* Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = B63671D5167B29BE00AD3CE9 /* Selected.png */; };
+		B63671D9167B29BE00AD3CE9 /* Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = B63671D6167B29BE00AD3CE9 /* Unselected.png */; };
+		B63671DA167B29BE00AD3CE9 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = B63671D7167B29BE00AD3CE9 /* user.png */; };
+		B69D626E167EAA3300B221D3 /* NSDictionary+NSDictionary_AllSortedKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = B69D626D167EAA3300B221D3 /* NSDictionary+NSDictionary_AllSortedKeys.m */; };
+		B69D6271167EB87900B221D3 /* dotted_box.png in Resources */ = {isa = PBXBuildFile; fileRef = B69D6270167EB87900B221D3 /* dotted_box.png */; };
+		B69D6277167EC19100B221D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69D6276167EC19100B221D3 /* QuartzCore.framework */; };
+		B69D627A167EFCB900B221D3 /* NSDictionary+NSDictionary_MutableDeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = B69D6279167EFCB900B221D3 /* NSDictionary+NSDictionary_MutableDeepCopy.m */; };
+		B69D627D167F1A1700B221D3 /* MSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69D627C167F1A1700B221D3 /* MSTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +48,23 @@
 		B63671AA167AC5CE00AD3CE9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B63671AB167AC5CE00AD3CE9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B63671AE167AC5CE00AD3CE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		B63671BB167AF30F00AD3CE9 /* MSBottomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSBottomViewController.h; sourceTree = "<group>"; };
+		B63671BC167AF30F00AD3CE9 /* MSBottomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSBottomViewController.m; sourceTree = "<group>"; };
+		B63671C1167B0C2700AD3CE9 /* MSTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTableView.h; sourceTree = "<group>"; };
+		B63671C2167B0C2700AD3CE9 /* MSTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTableView.m; sourceTree = "<group>"; };
+		B63671C8167B178400AD3CE9 /* MSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTableViewCell.h; sourceTree = "<group>"; };
+		B63671C9167B178400AD3CE9 /* MSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTableViewCell.m; sourceTree = "<group>"; };
+		B63671D5167B29BE00AD3CE9 /* Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Selected.png; sourceTree = "<group>"; };
+		B63671D6167B29BE00AD3CE9 /* Unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Unselected.png; sourceTree = "<group>"; };
+		B63671D7167B29BE00AD3CE9 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		B69D626C167EAA3300B221D3 /* NSDictionary+NSDictionary_AllSortedKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NSDictionary_AllSortedKeys.h"; sourceTree = "<group>"; };
+		B69D626D167EAA3300B221D3 /* NSDictionary+NSDictionary_AllSortedKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NSDictionary_AllSortedKeys.m"; sourceTree = "<group>"; };
+		B69D6270167EB87900B221D3 /* dotted_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dotted_box.png; sourceTree = "<group>"; };
+		B69D6276167EC19100B221D3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B69D6278167EFCB900B221D3 /* NSDictionary+NSDictionary_MutableDeepCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NSDictionary_MutableDeepCopy.h"; sourceTree = "<group>"; };
+		B69D6279167EFCB900B221D3 /* NSDictionary+NSDictionary_MutableDeepCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NSDictionary_MutableDeepCopy.m"; sourceTree = "<group>"; };
+		B69D627B167F1A1700B221D3 /* MSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTableViewController.h; sourceTree = "<group>"; };
+		B69D627C167F1A1700B221D3 /* MSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B69D6277167EC19100B221D3 /* QuartzCore.framework in Frameworks */,
 				B6367193167AC5CE00AD3CE9 /* UIKit.framework in Frameworks */,
 				B6367195167AC5CE00AD3CE9 /* Foundation.framework in Frameworks */,
 				B6367197167AC5CE00AD3CE9 /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +102,7 @@
 		B6367191167AC5CE00AD3CE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B69D6276167EC19100B221D3 /* QuartzCore.framework */,
 				B6367192167AC5CE00AD3CE9 /* UIKit.framework */,
 				B6367194167AC5CE00AD3CE9 /* Foundation.framework */,
 				B6367196167AC5CE00AD3CE9 /* CoreGraphics.framework */,
@@ -83,8 +113,21 @@
 		B6367198167AC5CE00AD3CE9 /* MultipleSelectionTableViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B63671D4167B29BE00AD3CE9 /* images */,
 				B63671A1167AC5CE00AD3CE9 /* AppDelegate.h */,
 				B63671A2167AC5CE00AD3CE9 /* AppDelegate.m */,
+				B69D626C167EAA3300B221D3 /* NSDictionary+NSDictionary_AllSortedKeys.h */,
+				B69D626D167EAA3300B221D3 /* NSDictionary+NSDictionary_AllSortedKeys.m */,
+				B69D6278167EFCB900B221D3 /* NSDictionary+NSDictionary_MutableDeepCopy.h */,
+				B69D6279167EFCB900B221D3 /* NSDictionary+NSDictionary_MutableDeepCopy.m */,
+				B63671C8167B178400AD3CE9 /* MSTableViewCell.h */,
+				B63671C9167B178400AD3CE9 /* MSTableViewCell.m */,
+				B63671C1167B0C2700AD3CE9 /* MSTableView.h */,
+				B63671C2167B0C2700AD3CE9 /* MSTableView.m */,
+				B69D627B167F1A1700B221D3 /* MSTableViewController.h */,
+				B69D627C167F1A1700B221D3 /* MSTableViewController.m */,
+				B63671BB167AF30F00AD3CE9 /* MSBottomViewController.h */,
+				B63671BC167AF30F00AD3CE9 /* MSBottomViewController.m */,
 				B63671AA167AC5CE00AD3CE9 /* ViewController.h */,
 				B63671AB167AC5CE00AD3CE9 /* ViewController.m */,
 				B63671AD167AC5CE00AD3CE9 /* ViewController.xib */,
@@ -105,6 +148,17 @@
 				B63671A8167AC5CE00AD3CE9 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B63671D4167B29BE00AD3CE9 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				B69D6270167EB87900B221D3 /* dotted_box.png */,
+				B63671D5167B29BE00AD3CE9 /* Selected.png */,
+				B63671D6167B29BE00AD3CE9 /* Unselected.png */,
+				B63671D7167B29BE00AD3CE9 /* user.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +217,10 @@
 				B63671A7167AC5CE00AD3CE9 /* Default@2x.png in Resources */,
 				B63671A9167AC5CE00AD3CE9 /* Default-568h@2x.png in Resources */,
 				B63671AF167AC5CE00AD3CE9 /* ViewController.xib in Resources */,
+				B63671D8167B29BE00AD3CE9 /* Selected.png in Resources */,
+				B63671D9167B29BE00AD3CE9 /* Unselected.png in Resources */,
+				B63671DA167B29BE00AD3CE9 /* user.png in Resources */,
+				B69D6271167EB87900B221D3 /* dotted_box.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +234,12 @@
 				B636719F167AC5CE00AD3CE9 /* main.m in Sources */,
 				B63671A3167AC5CE00AD3CE9 /* AppDelegate.m in Sources */,
 				B63671AC167AC5CE00AD3CE9 /* ViewController.m in Sources */,
+				B63671BD167AF30F00AD3CE9 /* MSBottomViewController.m in Sources */,
+				B63671C3167B0C2700AD3CE9 /* MSTableView.m in Sources */,
+				B63671CA167B178400AD3CE9 /* MSTableViewCell.m in Sources */,
+				B69D626E167EAA3300B221D3 /* NSDictionary+NSDictionary_AllSortedKeys.m in Sources */,
+				B69D627A167EFCB900B221D3 /* NSDictionary+NSDictionary_MutableDeepCopy.m in Sources */,
+				B69D627D167F1A1700B221D3 /* MSTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +319,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MultipleSelectionTableViewDemo/MultipleSelectionTableViewDemo-Prefix.pch";
 				INFOPLIST_FILE = "MultipleSelectionTableViewDemo/MultipleSelectionTableViewDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -266,6 +331,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MultipleSelectionTableViewDemo/MultipleSelectionTableViewDemo-Prefix.pch";
 				INFOPLIST_FILE = "MultipleSelectionTableViewDemo/MultipleSelectionTableViewDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -290,6 +356,7 @@
 				B63671B4167AC5CE00AD3CE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

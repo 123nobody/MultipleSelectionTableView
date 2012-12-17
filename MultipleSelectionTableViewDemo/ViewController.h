@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSTableView.h"
+#import "MSBottomViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MSBottomViewDelegate>
+{
+    NSDictionary *_dic;
+    MSBottomViewController *_bottomViewController;
+    MSTableView *_msTable;
+}
+
+@property (nonatomic, strong) NSDictionary *dic;
 
 @end
