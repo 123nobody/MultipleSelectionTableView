@@ -20,6 +20,18 @@
 {
     [super viewDidLoad];
     
+    [self initDic];
+    
+    MSTableViewController *msTableVC = [[MSTableViewController alloc]initWithFrame:CGRectMake(0, 0, 320, 460)];
+    msTableVC.msDelegate = self;
+    msTableVC.msDataSource = self;
+    msTableVC.msBottomDelegate = self;
+    
+    [self.view addSubview:msTableVC.view];
+}
+
+- (void)initDic
+{
     NSArray *array_A = [[NSArray alloc]initWithObjects:@"aaa", @"aab", @"abb", nil];
     NSArray *array_B = [[NSArray alloc]initWithObjects:@"bbb", @"bwer", @"bob", nil];
     NSArray *array_Y = [[NSArray alloc]initWithObjects:@"yyy", @"ytre", @"yui", nil];
@@ -35,29 +47,20 @@
     [array_Y release];
     [array_Z release];
     [arrays release];
-    
-    _msTable = [[MSTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 400)];
-    _msTable.delegate = self;
-    _msTable.dataSource  = self;
-    [self.view addSubview:_msTable];
-    
-    _bottomViewController = [[MSBottomViewController alloc]initWithFrame:CGRectMake(0, 400, 320, 60)];
-    _bottomViewController.delegate = self;
-    _bottomViewController.view.backgroundColor = [UIColor lightGrayColor];
-    [self.view addSubview:_bottomViewController.view];
+    [keys release];
 }
 
-#pragma mark UITableViewDataSource
+#pragma mark MSTableViewControllerDataSource
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (MSTableViewCell *)msTableView:(MSTableView *)msTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    MSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MSTableViewCell *cell = [msTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[MSTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    if ([((MSTableView *)tableView).selectedCellIndexPathArray containsObject:indexPath]) {
+    if ([msTableView.selectedCellIndexPathArray containsObject:indexPath]) {
         [cell setChecked:YES];
     } else {
         [cell setChecked:NO];
@@ -71,7 +74,7 @@
     return cell;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)msTableView:(MSTableView *)msTableView numberOfRowsInSection:(NSInteger)section
 {
     NSString *key = [[self.dic allSortedKeys] objectAtIndex:section];
     NSArray *objectArray = [self.dic objectForKey:key];
@@ -79,73 +82,55 @@
     return objectArray.count;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInMSTableView:(MSTableView *)msTableView
 {
     return [self.dic allKeys].count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return MS_TABLE_VIEW_CELL_HEIGHT;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (NSString *)msTableView:(MSTableView *)msTableView titleForHeaderInSection:(NSInteger)section
 {
     return [[self.dic allSortedKeys] objectAtIndex:section];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+- (NSArray *)sectionIndexTitlesForMSTableView:(MSTableView *)msTableView
 {
-    return index;
-}
-
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    return [self.dic allSortedKeys];
-}
-
-#pragma mark UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    if (((MSTableView *)tableView).selectedCellIndexPathArray == nil) {
-        NSLog(@"nil!!");
+    if (msTableView.isSearching) {
+        return nil;
+    } else {
+        return [self.dic allSortedKeys];
     }
-    
+}
+
+- (id)msTableView:(MSTableView *)msTableView objectAtIndexPath:(NSIndexPath *)indexPath
+{
     NSString *key = [[self.dic allSortedKeys] objectAtIndex:indexPath.section];
     NSArray *objectArray = [self.dic objectForKey:key];
-    NSString *name = [objectArray objectAtIndex:indexPath.row];
-    
-    if ([((MSTableView *)tableView).selectedCellIndexPathArray containsObject:indexPath]) {
-        [((MSTableView *)tableView).selectedCellIndexPathArray removeObject:indexPath];
-        //移除一个已选用户
-        [_bottomViewController removeUser:name];
-    } else {
-        [((MSTableView *)tableView).selectedCellIndexPathArray addObject:indexPath];
-        //添加一个用户
-        [_bottomViewController addUser:name];
-    }
-    
-    MSTableViewCell *cell = (MSTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-    [cell setChecked:!cell.isChecked];
-    
+    return [objectArray objectAtIndex:indexPath.row];
 }
 
-#pragma mark MSBottomViewDelegate
+#pragma mark MSTableViewControllerDelegate
+- (void)msTableView:(MSTableView *)msTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"在msTableView中点击了第%d组，第%d个用户。", indexPath.section, indexPath.row);
+}
+
+#pragma mark MSBottomViewControllerDelegate
 
 - (UIImage *)MSBottomView:(UIView *)msBottomView imageForUser:(id)user
 {
+    //通过user对象得到头像
     UIImage *image = [UIImage imageNamed:@"user.png"];
     return image;
 }
 
 - (void)MSBottomView:(UIView *)msBottomView didRemoveUserAtIndex:(NSInteger)index
 {
-    NSIndexPath *indexPath = [_msTable.selectedCellIndexPathArray objectAtIndex:index];
-    MSTableViewCell *cell = (MSTableViewCell *)[_msTable cellForRowAtIndexPath:indexPath];
-    [cell setChecked:NO];
-    [_msTable.selectedCellIndexPathArray removeObjectAtIndex:index];
+    NSLog(@"取消了第%d个用户。", index);
+}
+
+- (void)MSBottomView:(UIView *)msBottomView pressCommitButton:(UIButton *)button withSelectedUserArray:(NSArray *)selectedUserArray
+{
+    NSLog(@"选择了%d个用户：\n%@", selectedUserArray.count, selectedUserArray);
 }
 
 #pragma mark ----------------------

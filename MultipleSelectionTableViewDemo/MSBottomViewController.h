@@ -14,6 +14,7 @@
 - (UIImage *)MSBottomView:(UIView *)msBottomView imageForUser:(id)user;
 - (void)MSBottomView:(UIView *)msBottomView didAddUserAtIndex:(NSInteger)index;
 - (void)MSBottomView:(UIView *)msBottomView didRemoveUserAtIndex:(NSInteger)index;
+- (void)MSBottomView:(UIView *)msBottomView pressCommitButton:(UIButton *)button withSelectedUserArray:(NSArray *)selectedUserArray;
 @end
 
 @interface MSBottomViewController : UIViewController
@@ -27,7 +28,7 @@
     UIImageView *_blankImageView;
 }
 
-@property (nonatomic, strong) id<MSBottomViewDelegate> delegate;
+@property (nonatomic, assign) id<MSBottomViewDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame;
 - (void)addUser:(id)user;

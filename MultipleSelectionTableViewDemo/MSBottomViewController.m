@@ -17,15 +17,6 @@
 
 @synthesize delegate = _delegate;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
-    return self;
-}
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super init];
@@ -41,6 +32,7 @@
 {
 //    UIView *view = [[UIView alloc]initWithFrame:frame];
     [self.view setFrame:frame];
+    self.view.backgroundColor = [UIColor redColor];
     
     _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0.f, 0.f, 220.f, frame.size.height)];
     _scrollView.backgroundColor = [UIColor greenColor];
@@ -64,6 +56,7 @@
 - (void)pressCommitButton:(id)sender
 {
     NSLog(@"选择了%d个联系人。", _selectedUserArray.count);
+    [_delegate MSBottomView:self.view pressCommitButton:(UIButton *)sender withSelectedUserArray:_selectedUserArray];
 }
 
 - (void)pressImageButton:(id)sender
