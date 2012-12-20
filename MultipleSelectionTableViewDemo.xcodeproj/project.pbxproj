@@ -24,6 +24,7 @@
 		B63671D8167B29BE00AD3CE9 /* Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = B63671D5167B29BE00AD3CE9 /* Selected.png */; };
 		B63671D9167B29BE00AD3CE9 /* Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = B63671D6167B29BE00AD3CE9 /* Unselected.png */; };
 		B63671DA167B29BE00AD3CE9 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = B63671D7167B29BE00AD3CE9 /* user.png */; };
+		B67A50FB1681B4A300612826 /* MSSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B67A50FA1681B4A300612826 /* MSSearchTableViewCell.m */; };
 		B69D626E167EAA3300B221D3 /* NSDictionary+NSDictionary_AllSortedKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = B69D626D167EAA3300B221D3 /* NSDictionary+NSDictionary_AllSortedKeys.m */; };
 		B69D6271167EB87900B221D3 /* dotted_box.png in Resources */ = {isa = PBXBuildFile; fileRef = B69D6270167EB87900B221D3 /* dotted_box.png */; };
 		B69D6277167EC19100B221D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69D6276167EC19100B221D3 /* QuartzCore.framework */; };
@@ -57,6 +58,8 @@
 		B63671D5167B29BE00AD3CE9 /* Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Selected.png; sourceTree = "<group>"; };
 		B63671D6167B29BE00AD3CE9 /* Unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Unselected.png; sourceTree = "<group>"; };
 		B63671D7167B29BE00AD3CE9 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		B67A50F91681B4A300612826 /* MSSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchTableViewCell.h; sourceTree = "<group>"; };
+		B67A50FA1681B4A300612826 /* MSSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSearchTableViewCell.m; sourceTree = "<group>"; };
 		B69D626C167EAA3300B221D3 /* NSDictionary+NSDictionary_AllSortedKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NSDictionary_AllSortedKeys.h"; sourceTree = "<group>"; };
 		B69D626D167EAA3300B221D3 /* NSDictionary+NSDictionary_AllSortedKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NSDictionary_AllSortedKeys.m"; sourceTree = "<group>"; };
 		B69D6270167EB87900B221D3 /* dotted_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dotted_box.png; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				B69D6279167EFCB900B221D3 /* NSDictionary+NSDictionary_MutableDeepCopy.m */,
 				B63671C8167B178400AD3CE9 /* MSTableViewCell.h */,
 				B63671C9167B178400AD3CE9 /* MSTableViewCell.m */,
+				B67A50F91681B4A300612826 /* MSSearchTableViewCell.h */,
+				B67A50FA1681B4A300612826 /* MSSearchTableViewCell.m */,
 				B63671C1167B0C2700AD3CE9 /* MSTableView.h */,
 				B63671C2167B0C2700AD3CE9 /* MSTableView.m */,
 				B69D627B167F1A1700B221D3 /* MSTableViewController.h */,
@@ -240,6 +245,7 @@
 				B69D626E167EAA3300B221D3 /* NSDictionary+NSDictionary_AllSortedKeys.m in Sources */,
 				B69D627A167EFCB900B221D3 /* NSDictionary+NSDictionary_MutableDeepCopy.m in Sources */,
 				B69D627D167F1A1700B221D3 /* MSTableViewController.m in Sources */,
+				B67A50FB1681B4A300612826 /* MSSearchTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

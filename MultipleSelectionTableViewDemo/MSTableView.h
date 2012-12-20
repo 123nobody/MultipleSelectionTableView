@@ -10,21 +10,6 @@
 #import "MSTableViewCell.h"
 #import "NSDictionary+NSDictionary_AllSortedKeys.h"
 
-@interface MSTableView : UITableView <UISearchBarDelegate, UISearchDisplayDelegate>
-{
-    NSMutableArray *_selectedCellIndexPathArray;
-    
-    BOOL _isSearching;
-    UIButton *_maskButton;
-    UITableView *_searchTable;
-    UISearchBar *_searchBar;
-    UISearchDisplayController *_searchDC;
-}
-
-@property (nonatomic, strong) NSMutableArray *selectedCellIndexPathArray;
-
-@property (nonatomic, assign) BOOL isSearching;
-@property (nonatomic, strong) UISearchBar *searchBar;
-@property (nonatomic, strong) UISearchDisplayController *searchDC;
+@interface MSTableView : UITableView 
 
 @end

@@ -52,15 +52,17 @@
 
 #pragma mark MSTableViewControllerDataSource
 
-- (MSTableViewCell *)msTableView:(MSTableView *)msTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (MSTableViewCell *)msTableViewController:(MSTableViewController *)msTableViewController cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    MSTableViewCell *cell = [msTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MSTableViewCell *cell = [msTableViewController.msTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[MSTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    if ([msTableView.selectedCellIndexPathArray containsObject:indexPath]) {
+    id user = [[self.dic objectForKey:[[self.dic allSortedKeys] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+    
+    if ([msTableViewController.selectedUsers containsObject:user]) {
         [cell setChecked:YES];
     } else {
         [cell setChecked:NO];
@@ -94,11 +96,11 @@
 
 - (NSArray *)sectionIndexTitlesForMSTableView:(MSTableView *)msTableView
 {
-    if (msTableView.isSearching) {
-        return nil;
-    } else {
+//    if (msTableView.isSearching) {
+//        return nil;
+//    } else {
         return [self.dic allSortedKeys];
-    }
+//    }
 }
 
 - (id)msTableView:(MSTableView *)msTableView objectAtIndexPath:(NSIndexPath *)indexPath
@@ -108,6 +110,24 @@
     return [objectArray objectAtIndex:indexPath.row];
 }
 
+- (NSString *)nameForUser:(id)user
+{
+    return (NSString *)user;
+}
+
+- (UIImage *)imageForUser:(id)user
+{
+    //通过user对象得到头像
+    UIImage *image = [UIImage imageNamed:@"user.png"];
+    return image;
+}
+
+- (NSArray *)searchList
+{
+    NSArray *searchList = [[[NSArray alloc]initWithObjects:@"aaa", @"aab", @"abb", @"bbb", @"bwer", @"bob", @"yyy", @"ytre", @"yui", @"zzz", @"zxx", @"zapo", nil]autorelease];
+    return searchList;
+}
+
 #pragma mark MSTableViewControllerDelegate
 - (void)msTableView:(MSTableView *)msTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -115,13 +135,6 @@
 }
 
 #pragma mark MSBottomViewControllerDelegate
-
-- (UIImage *)MSBottomView:(UIView *)msBottomView imageForUser:(id)user
-{
-    //通过user对象得到头像
-    UIImage *image = [UIImage imageNamed:@"user.png"];
-    return image;
-}
 
 - (void)MSBottomView:(UIView *)msBottomView didRemoveUserAtIndex:(NSInteger)index
 {

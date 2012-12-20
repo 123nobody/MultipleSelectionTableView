@@ -16,13 +16,14 @@
 @implementation MSBottomViewController
 
 @synthesize delegate = _delegate;
+@synthesize selectedUserArray = _selectedUserArray;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super init];
     if (self) {
         _selectedUserArray = [[NSMutableArray alloc]initWithCapacity:0];
-        _selectedUserImageButtonArray = [[NSMutableArray alloc]initWithCapacity:0];
+        _selectedUserImages = [[NSMutableArray alloc]initWithCapacity:0];
         [self initViewWithFrame:frame];
     }
     return self;
@@ -61,7 +62,7 @@
 
 - (void)pressImageButton:(id)sender
 {
-    NSInteger index = [_selectedUserImageButtonArray indexOfObject:(UIButton *)sender];
+    NSInteger index = [_selectedUserImages indexOfObject:[(UIView *)sender superview]];
     NSLog(@"点击了第%d个用户。", index);
     [self removeUserAtIndex:index];
     [_delegate MSBottomView:self.view didRemoveUserAtIndex:index];
@@ -69,7 +70,7 @@
 
 - (CGRect)getFrameByIndex:(NSInteger)index
 {
-    CGRect frame = CGRectMake((10.f + index * 40.f), ((_scrollView.frame.size.height - 36.f)/2), 36.f, 36.f);
+    CGRect frame = CGRectMake((10.f + index * 40.f), ((_scrollView.frame.size.height - 44.f)/2), 36.f, 48.f);
     return frame;
 }
 
@@ -77,30 +78,23 @@
 {
     [_selectedUserArray addObject:user];
     
+    UIView *view = [[UIView alloc]init];
+    [view setFrame:[self getFrameByIndex:(_selectedUserArray.count - 1)]];
+    view.backgroundColor = [UIColor blueColor];
+    
     UIImage *image = [_delegate MSBottomView:self.view imageForUser:user];
     UIButton *imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [imageButton setFrame:CGRectMake(0, 0, 36.f, 36.f)];
     imageButton.backgroundColor = [UIColor colorWithPatternImage:image];
-    [imageButton setFrame:[self getFrameByIndex:(_selectedUserArray.count - 1)]];
-    
     [imageButton addTarget:self action:@selector(pressImageButton:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:imageButton];
     
-    [_scrollView addSubview:imageButton];
-    [_selectedUserImageButtonArray addObject:imageButton];
-    
-    [_scrollView setContentSize:CGSizeMake((10.f + ((_selectedUserArray.count + 1) * 40.f)), self.view.frame.size.height)];
-    
-//    [UIView beginAnimations:@"add" context:nil];
-//    [UIView setAnimationDelay:0.3];
-    [UIScrollView beginAnimations:@"add" context:nil];
-    [UIScrollView setAnimationDelay:0.3];
-    
-    CGRect frame = _blankImageView.frame;
-    frame.origin.x = 10.f + (_selectedUserArray.count * 40.f);
-    [_blankImageView setFrame:frame];
-    
-    [UIScrollView commitAnimations];
-//    [UIView commitAnimations];
-    
+    UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 38.f, 36.f, 10.f)];
+    nameLabel.textAlignment = UITextAlignmentCenter;
+    nameLabel.font = [UIFont systemFontOfSize:12.f];
+    nameLabel.text = [_delegate MSBottomView:self.view nameForUser:user];
+    [view addSubview:nameLabel];
+
 //    // 准备动画
 //    CATransition *animation = [CATransition animation];
 //    //动画播放持续时间
@@ -115,28 +109,49 @@
 //     */
 //    [animation setType:kCATransitionFade];
 //    [self.view.layer addAnimation:animation forKey:nil];
-//    
+//
 //    //变更
-//    
-//    
+//
+//
 //    // 结束动画
 //    [UIView commitAnimations];
     
+    //加动画 淡入
+    [_scrollView addSubview:view];
+    
+    [_selectedUserImages addObject:view];
+    
+    [_scrollView setContentSize:CGSizeMake((10.f + ((_selectedUserArray.count + 1) * 40.f)), self.view.frame.size.height)];
+    
+//    [UIView beginAnimations:@"add" context:nil];
+//    [UIView setAnimationDelay:0.3];
+    [UIImageView beginAnimations:@"add" context:nil];
+    [UIImageView setAnimationDelay:0.3];
+    
+    CGRect frame = _blankImageView.frame;
+    frame.origin.x = 10.f + (_selectedUserArray.count * 40.f);
+    [_blankImageView setFrame:frame];
+    
+    [UIImageView commitAnimations];
+    
     [self resetCommitButtonTitle];
+    
+    
 }
 
 - (void)removeUserAtIndex:(NSInteger)index
 {
     [_selectedUserArray removeObjectAtIndex:index];
     
-    [[_selectedUserImageButtonArray objectAtIndex:index] removeFromSuperview];
-    [_selectedUserImageButtonArray removeObjectAtIndex:index];
+    
+    [[_selectedUserImages objectAtIndex:index] removeFromSuperview];
+    [_selectedUserImages removeObjectAtIndex:index];
     
     [UIScrollView beginAnimations:@"remove" context:nil];
     [UIScrollView setAnimationDelay:0.3];
     
     CGRect frame = _blankImageView.frame;
-    frame.origin.x = 10.f + (_selectedUserArray.count * 40.f);
+    frame.origin.x = 10.f + (_selectedUserImages.count * 40.f);
     [_blankImageView setFrame:frame];
     
     [UIScrollView commitAnimations];
@@ -153,10 +168,10 @@
 
 - (void)reloadScrollView
 {
-    UIButton *imageButton;
-    for (int i = 0; i < _selectedUserImageButtonArray.count; i++) {
-        imageButton = [_selectedUserImageButtonArray objectAtIndex:i];
-        [imageButton setFrame:[self getFrameByIndex:i]];
+    UIView *userImage;
+    for (int i = 0; i < _selectedUserImages.count; i++) {
+        userImage = [_selectedUserImages objectAtIndex:i];
+        [userImage setFrame:[self getFrameByIndex:i]];
     }
 }
 
@@ -185,8 +200,16 @@
 
 - (void)dealloc
 {
+    [_scrollView release];
+    _scrollView = nil;
+    [_selectedUserImages release];
+    _selectedUserImages = nil;
+    [_commitButton release];
+    _commitButton = nil;
     [_selectedUserArray release];
     _selectedUserArray = nil;
+    [_blankImageView release];
+    _blankImageView = nil;
     [super dealloc];
 }
 
